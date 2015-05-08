@@ -4,5 +4,11 @@
 		"label":"File naming pattern",
 		"type":"text",
 		"default":"\\[(?P<id>.{11})\\]"
+	},
+	{
+		"id":"yt_apikey",
+		"label":"Youtube v3 API key",
+		"type":"text",
+		"default":"CHANGEME"
 	}
 ]
