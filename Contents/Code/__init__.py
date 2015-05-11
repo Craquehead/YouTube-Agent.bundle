@@ -48,7 +48,7 @@ class YouTubeAgent(Agent.Movies):
 			if 'high' in json_obj['thumbnails']:
 				thumb = json_obj['thumbnails']['high']['url']
 			elif 'standard' in json_obj['thumbnails']:
-				thumb = json_obj[0]['thumbnails']['standard']['url']
+				thumb = json_obj['thumbnails']['standard']['url']
 
 			if thumb:
 				poster = HTTP.Request(thumb)
