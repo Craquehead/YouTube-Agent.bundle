@@ -10,5 +10,11 @@
 		"label":"Youtube v3 API key",
 		"type":"text",
 		"default":"CHANGEME"
+	},
+	{
+		"id":"yt_prependdate",
+		"label":"Prepend datestamp?",
+		"type":"bool",
+		"default":"false
 	}
 ]

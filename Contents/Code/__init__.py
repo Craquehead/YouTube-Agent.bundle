@@ -35,14 +35,19 @@ class YouTubeAgent(Agent.Movies):
 		try:
 			json_obj = JSON.ObjectFromURL(YOUTUBE_VIDEO_DETAILS % (metadata.id, Prefs['yt_apikey']))['items'][0]['snippet']
 		except:
-			Log('Could not retrieve data from YouTube API for: %s' % metadata.id)
+			Log('Could not retrieve data from YouTube for: %s' % metadata.id)
 			json_obj = None
 
 		if json_obj:
-			metadata.title = json_obj['title']
+			metadata.originally_available_at = Datetime.ParseDate(json_obj['publishedAt']).date()
+
+			if Prefs['yt_prependdate']:
+				metadata.title = metadata.originally_available_at . ' - ' . metadata.json_obj['title']
+			else:
+				metadata.title = json_obj['title']
+
 			metadata.studio = json_obj['channelTitle']
 			metadata.summary = json_obj['description']
-			metadata.originally_available_at = Datetime.ParseDate(json_obj['publishedAt']).date()
 
 			thumb = None
 			if 'high' in json_obj['thumbnails']:
